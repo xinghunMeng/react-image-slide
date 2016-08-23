@@ -1,0 +1,106 @@
+body {
+    width: 100vw;
+    margin: 0;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-center {
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-columns {
+    flex-direction: column;
+}
+
+.Slide {
+	background: red;
+	width:100vw;
+	height: 100vh;
+	float: left;
+    &__ItemImg {
+        margin: 50% auto;
+        padding: 0;
+        overflow-x: auto;
+        &::-webkit-scrollbar {
+            display: none;
+        }
+        li {
+            padding-right: 2px;
+            flex-shrink: 0;
+            list-style: none;
+        }
+        img {
+            height: 100px;
+        }
+    }
+    &__Img {
+        background: #000;
+        z-index: 999;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        overflow: hidden;
+        height: 100vh;
+        > p {
+            text-align: center;
+            color: #fff;
+            font-size: 18px;
+            margin-top: 10px;
+            position: absolute;
+            z-index: 10;
+            left: 0;
+            right: 0;
+        }
+        i {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            z-index: 10;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 1px solid #fff;
+            &:after {
+                color: white;
+                font-weight: bold;
+            }
+        }
+        ul {
+            position: absolute;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+        li {
+            flex-shrink: 0;
+            height: 100%;
+        }
+        img {
+            width: 100vw;
+            height: auto;
+        }
+        span {
+            position: absolute;
+            font-size: 25px;
+            color: #fff;
+            right: 20px;
+            top: 10px;
+            z-index: 11;
+        }
+    }
+}
+
+.translate {
+    -webkit-transition: 0.15s all ease;
+}
+
+.full-height {
+    height: 100vh;
+    overflow-y: auto;
+}
