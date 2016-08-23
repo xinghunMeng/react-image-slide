@@ -5,7 +5,7 @@ import './page'
 let imgArray = [
 	'http://tupian.enterdesk.com/2013/lxy/07/27/6/1.jpg',
 	'http://bizhi.zhuoku.com/wall/jie/20070409/huoying/113.jpg',
-	'http://i5.qhimg.com/t011e93ef805362113f.jpg',
+	'http://i3.17173cdn.com/2fhnvk/YWxqaGBf/cms3/tUcIQCbjFFjdgfr.jpg',
 	'http://n.sinaimg.cn/games/transform/20160722/6sHg-fxuhukz0771063.jpg',
 	'http://img4.imgtn.bdimg.com/it/u=1422978104,3773037432&fm=21&gp=0.jpg',
 ]
@@ -46,17 +46,19 @@ let ShowImg = React.createClass({
 		const { itemImages, showImg } = this.props
 
 		return (
-			<ul className="Slide__ItemImg flex ">
-				{
-					itemImages.map((item, index) => {
-						return (
-							<li key={index} onClick={showImg.bind(null, index)}>
-								<img src={item} />
-							</li>
-						)
-					})
-				}
-			</ul>
+            <div>
+    			<ul className="Slide__ItemImg flex ">
+    				{
+    					itemImages.map((item, index) => {
+    						return (
+    							<li key={index} onClick={showImg.bind(null, index)}>
+    								<img src={item} />
+    							</li>
+    						)
+    					})
+    				}
+    			</ul>
+            </div>
 		)
 	}
 })
@@ -67,7 +69,7 @@ class ImgSlidePlay extends React.Component{
         super(...props)
         this.touchRange = 0 // 触控距离
 		this.count = 0 // 控制弹层总显示的数字以及当前显示的图片
-		this.screenWidth = document.body.clientWidth
+		this.screenWidth = document.body.clientWidth //屏幕宽度
         this.state = {
             imgIndex: this.props.imgIndex,
             hasMoveStyle: true
@@ -93,7 +95,7 @@ class ImgSlidePlay extends React.Component{
     }
 
     movingImg(length, e) {
-        let moveDirection = this.touchRange - e.touches[0].pageX // 当滑动到边界时，往另一端滑动会触发动画
+        let moveDirection = this.touchRange - e.touches[0].pageX // 当滑动到边界时，再滑动会没有效果
         if ((this.count === 0 && moveDirection < 0) || (this.count === length - 1 && moveDirection > 0)) {
             return
         }
