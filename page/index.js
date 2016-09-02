@@ -1,14 +1,9 @@
 import React from 'react'
 import ReactDom from 'react-dom'
-import './page'
-
-let imgArray = [
-	'http://tupian.enterdesk.com/2013/lxy/07/27/6/1.jpg',
-	'http://bizhi.zhuoku.com/wall/jie/20070409/huoying/113.jpg',
-	'http://i3.17173cdn.com/2fhnvk/YWxqaGBf/cms3/tUcIQCbjFFjdgfr.jpg',
-	'http://n.sinaimg.cn/games/transform/20160722/6sHg-fxuhukz0771063.jpg',
-	'http://img4.imgtn.bdimg.com/it/u=1422978104,3773037432&fm=21&gp=0.jpg',
-]
+import { Router, Route, Link, browserHistory, hashHistory } from 'react-router'
+import { Provider } from 'react-redux'
+import Parent1 from './page'
+import './page.scss'
 
 class Parent extends React.Component{
 
@@ -28,14 +23,20 @@ class Parent extends React.Component{
 	}
 
 	render() {
-		const { images } = this.props
+		const images = imgArray
 		return (
-			<div className='Slide'>
-				<ShowImg itemImages={images} showImg={this.showImg.bind(this)} />
-				{
-					this.state.isImgShow && <ImgSlidePlay itemImages={images} showImg={this.showImg.bind(this)} imgIndex={this.state.imgIndex}/>
-				}  			
-	  		</div>	
+            <div>
+    			<div className='Slide'>
+    				<ShowImg itemImages={images} showImg={this.showImg.bind(this)} />
+    				{
+    					this.state.isImgShow && <ImgSlidePlay itemImages={images} showImg={this.showImg.bind(this)} imgIndex={this.state.imgIndex}/>
+    				}  			
+    	  		</div>
+                <Link to='about' className="test">
+                    <p>111</p>
+                </Link>
+                {this.props.children}
+            </div>
 		)
 	}
 }
@@ -159,7 +160,14 @@ class ImgSlidePlay extends React.Component{
 	}
 }
 
-ReactDom.render(
-	<Parent images={imgArray} />,
+ReactDom.render((
+    <Provider store={store}>
+        <Router history={browserHistory}>
+            <Route path="/" component={Parent}>
+                <Route path='/about' component={Parent1} />
+            </Route>
+        </Router>
+    </Provider>
+    ),
   	document.getElementById('app')
-);
+)
