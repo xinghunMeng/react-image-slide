@@ -1,10 +1,22 @@
 import React from 'react'
 import ReactDom from 'react-dom'
 import { Router, Route, Link, browserHistory, hashHistory } from 'react-router'
-import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import { Provider, connect } from 'react-redux'
+import { getImg } from '../actions/home'
+import getImgArr from '../reducers/home'
 import Parent1 from './page'
 import './page.scss'
 
+let store = createStore(getImgArr)
+
+function select(state) {
+  return {
+    getImg: state.img
+  }
+}
+
+connect(select)(Parent)
 class Parent extends React.Component{
 
 	constructor(...args) {
@@ -23,7 +35,8 @@ class Parent extends React.Component{
 	}
 
 	render() {
-		const images = imgArray
+        const { dispatch } = this.props
+		const images = dispatch(getImg)
 		return (
             <div>
     			<div className='Slide'>
