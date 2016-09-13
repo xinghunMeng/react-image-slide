@@ -1,9 +1,8 @@
 {
   "name": "react-image-slide",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "",
   "scripts": {
-    "start": "webpack-dev-server --hot --inline"
   },
   "author": "mengxinghun",
   "license": "ISC",
@@ -18,8 +17,6 @@
     "react-dom": "^15.3.0",
     "sass-loader": "^4.0.0",
     "style-loader": "^0.13.1",
-    "stylus": "^0.54.5",
-    "stylus-loader": "^2.1.1",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1"
