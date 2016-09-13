@@ -1,12 +1,12 @@
 {
-  "name": "wn",
+  "name": "react-image-slide",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --hot --inline"
   },
-  "author": "",
+  "author": "mengxinghun",
   "license": "ISC",
   "devDependencies": {
     "babel-loader": "^6.2.4",
